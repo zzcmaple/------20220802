@@ -1,16 +1,15 @@
-const getUserInfo = () => {
+function getUserInfo() {
   $.ajax({
     type: 'GET',
     url: '/my/userinfo',
     data: null,
     success: (res) => {
-      console.log(res);
       const { status, message } = res;
       if (status !== 0) return layui.layer.msg(message);
       renderAvatar(res.data);
     },
   });
-};
+}
 
 const renderAvatar = (user) => {
   // 获取用户名字
