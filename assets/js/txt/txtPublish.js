@@ -77,6 +77,7 @@ $('.layui-form').submit(function (e) {
       // 5. 将文件对象，存储到 fd 中
       fd.append('cover_img', blob);
       // 6. 发起 ajax 数据请求
+      publishArticle(fd);
     });
 });
 
@@ -90,13 +91,14 @@ function publishArticle(fd) {
     contentType: false,
     processData: false,
     success: function (res) {
+      console.log(res);
       const { status, message } = res;
       if (status !== 0) {
         return layer.msg(message);
       }
       layer.msg(message);
       // 发布文章成功后，跳转到文章列表页面
-      //   location.href = '/article/art_list.html';
+      location.href = '/txt/txtList.html';
     },
   });
 }
